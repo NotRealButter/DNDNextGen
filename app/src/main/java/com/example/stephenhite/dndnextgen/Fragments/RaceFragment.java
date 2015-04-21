@@ -17,7 +17,10 @@ import com.example.stephenhite.dndnextgen.R;
 public class RaceFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
     View v;
+    public Spinner raceSpinner;
+
 
     public static RaceFragment newInstance() {
         RaceFragment fragment = new RaceFragment();
@@ -30,7 +33,7 @@ public class RaceFragment extends Fragment implements AdapterView.OnItemSelected
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.race_fragment, container, false);
-        Spinner raceSpinner = (Spinner) v.findViewById(R.id.raceSpinner);
+        raceSpinner = (Spinner) v.findViewById(R.id.raceSpinner);
         ArrayAdapter<CharSequence> raceAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.race_array, R.layout.spinner_item);
         raceAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         raceSpinner.setAdapter(raceAdapter);

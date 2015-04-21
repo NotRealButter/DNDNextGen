@@ -16,9 +16,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/race_picture"
+        android:id="@+id/class_picture"
         android:src="@drawable/default_image"
-        android:layout_below="@+id/raceSpinner"
+        android:layout_below="@+id/classSpinner"
         android:layout_alignParentStart="true"
         android:adjustViewBounds="true"
         android:alpha=".5" />
@@ -26,7 +26,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/raceSpinner"
+        android:id="@+id/classSpinner"
         android:popupBackground="#ff6b6c70"
         android:spinnerMode="dialog"
         android:gravity="top"
@@ -40,17 +40,17 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/raceSpinner">
+        android:layout_below="@+id/classSpinner">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/race_description"
+            android:id="@+id/class_description"
             android:backgroundTint="#63dbded0"
             android:background="#8bffffff"
             android:nestedScrollingEnabled="true"
             android:autoText="false"
-            android:layout_alignTop="@+id/race_picture"
+            android:layout_alignTop="@+id/class_picture"
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/textView2"
             android:layout_alignEnd="@+id/textView2"
@@ -62,9 +62,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="saveRace"
-        android:id="@+id/save_race_button"
+        android:text="New Button"
+        android:id="@+id/button"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="HandleRaceChange" />
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

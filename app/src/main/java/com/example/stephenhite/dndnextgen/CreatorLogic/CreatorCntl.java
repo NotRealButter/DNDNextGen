@@ -1,8 +1,9 @@
 package com.example.stephenhite.dndnextgen.CreatorLogic;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.io.ObjectOutputStream;
 /**
  * Created by Stephen Hite on 4/14/2015.
  */
-public class CreatorCntl {
+public class CreatorCntl implements Parcelable {
     public UserCharacter userCharacter = new UserCharacter();
 
     private String path = "/sdcard/";
@@ -23,19 +24,16 @@ public class CreatorCntl {
     public String filePath = charFilePath + charID + fileExt;
 
 
-    public Object loadCharacter() {
+    public Object loadCharacter(Context context) {
         FileInputStream saveInput = null;
         ObjectInputStream charInput = null;
-        String filePath = charFilePath + charID + fileExt;
 
         try {
-            File f = new File(context.getFilesDir(), filePath);
-            if (f.exists()) {
-                saveInput = new FileInputStream(filePath);
-                charInput = new ObjectInputStream(saveInput);
-                userCharacter = (UserCharacter) charInput.readObject();
-                charInput.close();
-            }
+            saveInput = context.openFileInput(filePath);
+            charInput = new ObjectInputStream(saveInput);
+            userCharacter = (UserCharacter) charInput.readObject();
+            saveInput.close();
+
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
@@ -58,5 +56,19 @@ public class CreatorCntl {
             x.printStackTrace();
         }
 
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeValue(userCharacter);
+    }
+
+    public void readFromParcel(Parcel in) {
+        in.readParcelable(CreatorCntl.class.getClassLoader());
     }
 }

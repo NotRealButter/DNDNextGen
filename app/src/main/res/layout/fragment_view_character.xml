@@ -50,6 +50,48 @@
                 android:id="@+id/character_age_box"
                 android:layout_below="@+id/character_name_box"
                 android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="alignment"
+                android:id="@+id/character_alignment_box"
+                android:layout_below="@+id/character_age_box"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="36dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="class"
+                android:id="@+id/character_class_box"
+                android:layout_below="@+id/character_alignment_box"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="34dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="race"
+                android:id="@+id/character_race_box"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="height"
+                android:id="@+id/character_height_box"
+                android:layout_alignBottom="@+id/character_age_box"
+                android:layout_toEndOf="@+id/character_name_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="weight"
+                android:id="@+id/character_weight_box"
+                android:layout_alignTop="@+id/character_alignment_box"
+                android:layout_alignStart="@+id/character_height_box" />
         </RelativeLayout>
     </FrameLayout>
 

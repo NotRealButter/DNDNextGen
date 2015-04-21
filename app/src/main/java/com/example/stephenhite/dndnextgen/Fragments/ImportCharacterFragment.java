@@ -7,23 +7,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.example.stephenhite.dndnextgen.R;
 
-public class ViewCharacterFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
+public class ImportCharacterFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-    // TODO: Rename and change types and number of parameters
-    public static ViewCharacterFragment newInstance(String param1, String param2) {
-        ViewCharacterFragment fragment = new ViewCharacterFragment();
+
+    public static ImportCharacterFragment newInstance(String param1, String param2) {
+        ImportCharacterFragment fragment = new ImportCharacterFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -31,7 +30,7 @@ public class ViewCharacterFragment extends Fragment {
         return fragment;
     }
 
-    public ViewCharacterFragment() {
+    public ImportCharacterFragment() {
     }
 
     @Override
@@ -46,10 +45,9 @@ public class ViewCharacterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_view_character, container, false);
+        return inflater.inflate(R.layout.fragment_import_character, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -67,8 +65,15 @@ public class ViewCharacterFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+    }
+
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 

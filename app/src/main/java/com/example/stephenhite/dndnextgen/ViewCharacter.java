@@ -15,14 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stephenhite.dndnextgen.CreatorLogic.CreatorCntl;
-import com.example.stephenhite.dndnextgen.CreatorLogic.UserCharacter;
 import com.example.stephenhite.dndnextgen.Fragments.CharacterCreateFragment;
+import com.example.stephenhite.dndnextgen.Fragments.GameClassFragment;
+import com.example.stephenhite.dndnextgen.Fragments.MenuFragment;
 import com.example.stephenhite.dndnextgen.Fragments.RaceFragment;
 import com.example.stephenhite.dndnextgen.Fragments.ViewCharacterFragment;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 
@@ -41,6 +39,16 @@ public class ViewCharacter extends ActionBarActivity {
     ActionBarDrawerToggle mDrawerToggle;
 
 
+    CharacterCreateFragment characterCreateFragment;
+    RaceFragment raceFragment;
+    MenuFragment menuFragment;
+    GameClassFragment classFragment;
+
+    Intent mainIntent;
+    Intent createIntent;
+    Intent viewIntent;
+    Intent importIntent;
+
     CreatorCntl creatorCntl;
 
 
@@ -56,28 +64,33 @@ public class ViewCharacter extends ActionBarActivity {
 
         switch (position) {
             case 0:
-
-                fragmentManager.beginTransaction().replace(R.id.container, CharacterCreateFragment.newInstance("match_parent", "match_parent"), "title_section_2")
+                fragmentManager.beginTransaction().replace(R.id.container, characterCreateFragment, "title_section_2")
                         .commit();
+                setTitle(mNavigationItems.get(position).mTitle);
                 break;
             case 1:
-
-                fragmentManager.beginTransaction().replace(R.id.container, RaceFragment.newInstance("match_parent", "match_parent"), "title_section_1")
+                fragmentManager.beginTransaction().replace(R.id.container, raceFragment, "title_section_1")
                         .commit();
+                setTitle(mNavigationItems.get(position).mTitle);
                 break;
             case 2:
-
-                fragmentManager.beginTransaction().replace(R.id.container, ViewCharacterFragment.newInstance("match_parent", "match_parent"), "title_section_2")
+                fragmentManager.beginTransaction().replace(R.id.container, classFragment, "title_section_2")
                         .commit();
-//            case 3:
-//
-//                fragmentManager.beginTransaction().replace(R.id.container, ImportCharacterFragment.newInstance("match_parent", "match_parent"), "title_section_2")
-//                        .commit();
+                setTitle(mNavigationItems.get(position).mTitle);
+            case 3:
+
+                fragmentManager.beginTransaction().replace(R.id.container, classFragment, "title_section_2")
+                        .commit();
+                setTitle(mNavigationItems.get(position).mTitle);
+//                Toast.makeText(getBaseContext(), "AbilityScore", Toast.LENGTH_SHORT).show();
+            case 4:
+                creatorCntl.saveCharacter(this.getBaseContext());
+                Toast.makeText(getBaseContext(), "saved", Toast.LENGTH_SHORT).show();
         }
 
         mRightDrawer.setItemChecked(position, true);
-        setTitle(mNavigationItems.get(position).mTitle);
-        mDrawerLayout.closeDrawer(mLeftDrawer);
+
+        mDrawerLayout.closeDrawer(mRightDrawer);
     }
 
     private void selectItemFromLeftDrawer(int position) {
@@ -95,10 +108,10 @@ public class ViewCharacter extends ActionBarActivity {
             case 2:
                 Toast.makeText(getBaseContext(), "You're Already There!", Toast.LENGTH_SHORT).show();
                 break;
-//            case 3:
-//                Intent importIntent = new Intent(mDrawerLayout.getContext(),ImportCharacter.class);
-//                startActivity(importIntent);
-//                finish();
+            case 3:
+                Intent importIntent = new Intent(mDrawerLayout.getContext(), ImportCharacter.class);
+                startActivity(importIntent);
+                finish();
         }
 
         mRightDrawer.setItemChecked(position, true);
@@ -113,12 +126,9 @@ public class ViewCharacter extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -132,12 +142,20 @@ public class ViewCharacter extends ActionBarActivity {
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
+        mainIntent = new Intent(mDrawerLayout.getContext(), MainActivity.class);
+        createIntent = new Intent(mDrawerLayout.getContext(), CharCreateActivity.class);
+        viewIntent = new Intent(mDrawerLayout.getContext(), ViewCharacter.class);
+        importIntent = new Intent(mDrawerLayout.getContext(), ImportCharacter.class);
+
+        characterCreateFragment = CharacterCreateFragment.newInstance("match_parent", "match_parent");
+        classFragment = GameClassFragment.newInstance("match_parent", "match_parent");
+        raceFragment = RaceFragment.newInstance("match_parent", "match_parent");
+        menuFragment = MenuFragment.newInstance("match_parent", "match_parent");
+
         FragmentManager fm = getFragmentManager();
 
-        if (savedInstanceState == null) {
-            fm.beginTransaction().replace(R.id.container, ViewCharacterFragment.newInstance("match_parent", "match_parent"), "title_section_1").commit();
-        }
 
+            fm.beginTransaction().replace(R.id.container, ViewCharacterFragment.newInstance("match_parent", "match_parent"), "title_section_1").commit();
 
         mLeftDrawer = (ListView) findViewById(R.id.navigation_drawer_left);
         mRightDrawer = (ListView) findViewById(R.id.navigation_drawer_right);
@@ -182,28 +200,27 @@ public class ViewCharacter extends ActionBarActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        creatorCntl = new CreatorCntl();
+        this.creatorCntl = MainActivity.creatorCntl;
     }
 
     public void ViewCreateCharacter(View view) {
         TextView nameBox = (TextView) findViewById(R.id.character_name_box);
         TextView ageBox = (TextView) findViewById(R.id.character_age_box);
-        FileInputStream saveInput = null;
-        ObjectInputStream charInput = null;
+        TextView heightBox = (TextView) findViewById(R.id.character_height_box);
+        TextView weightBox = (TextView) findViewById(R.id.character_weight_box);
+        TextView raceBox = (TextView) findViewById(R.id.character_race_box);
+        TextView classBox = (TextView) findViewById(R.id.character_class_box);
+        TextView alignmentBox = (TextView) findViewById(R.id.character_alignment_box);
 
-        try {
-            saveInput = this.openFileInput(creatorCntl.filePath);
-            charInput = new ObjectInputStream(saveInput);
-            creatorCntl.userCharacter = (UserCharacter) charInput.readObject();
-            saveInput.close();
+        creatorCntl.loadCharacter(this.getBaseContext());
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
         nameBox.setText(creatorCntl.userCharacter.getName());
         ageBox.setText(Integer.valueOf(creatorCntl.userCharacter.getAge()).toString());
+        heightBox.setText(Integer.valueOf(creatorCntl.userCharacter.getHeight()).toString());
+        weightBox.setText(Integer.valueOf(creatorCntl.userCharacter.getWeight()).toString());
+        raceBox.setText(creatorCntl.userCharacter.getRace());
+        classBox.setText(creatorCntl.userCharacter.getClass1());
+        alignmentBox.setText(creatorCntl.userCharacter.getAlignment());
 
 
     }

@@ -13,7 +13,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.stephenhite.dndnextgen.CreatorLogic.CreatorCntl;
+import com.example.stephenhite.dndnextgen.Fragments.CharacterCreateFragment;
+import com.example.stephenhite.dndnextgen.Fragments.GameClassFragment;
 import com.example.stephenhite.dndnextgen.Fragments.MenuFragment;
+import com.example.stephenhite.dndnextgen.Fragments.RaceFragment;
 
 import java.util.ArrayList;
 
@@ -32,7 +36,19 @@ public class MainActivity extends ActionBarActivity {
     DrawerLayout mDrawerLayout;
     ActionBarDrawerToggle mDrawerToggle;
 
+    CharacterCreateFragment characterCreateFragment;
+    RaceFragment raceFragment;
     MenuFragment menuFragment;
+    GameClassFragment classFragment;
+
+    Intent mainIntent;
+    Intent createIntent;
+    Intent viewIntent;
+    Intent importIntent;
+
+    static CreatorCntl creatorCntl = new CreatorCntl();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +77,15 @@ public class MainActivity extends ActionBarActivity {
                 Toast.makeText(getBaseContext(), "You're Already There!", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
-                Intent createIntent = new Intent(mDrawerLayout.getContext(), CharCreateActivity.class);
                 startActivity(createIntent);
                 finish();
                 break;
             case 2:
-                Intent viewIntent = new Intent(mDrawerLayout.getContext(), ViewCharacter.class);
                 startActivity(viewIntent);
                 finish();
-//            case 3:
-//                Intent importIntent = new Intent(mDrawerLayout.getContext(),ImportCharacter.class);
-//                startActivity(importIntent);
-//                finish();
+            case 3:
+                startActivity(importIntent);
+                finish();
         }
 
         mRightDrawer.setItemChecked(position, true);
@@ -82,17 +95,24 @@ public class MainActivity extends ActionBarActivity {
 
     public void initMenus(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
-        menuFragment = new MenuFragment();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mainIntent = new Intent(mDrawerLayout.getContext(), MainActivity.class);
+        createIntent = new Intent(mDrawerLayout.getContext(), CharCreateActivity.class);
+        viewIntent = new Intent(mDrawerLayout.getContext(), ViewCharacter.class);
+        importIntent = new Intent(mDrawerLayout.getContext(), ImportCharacter.class);
+
+        characterCreateFragment = CharacterCreateFragment.newInstance("match_parent", "match_parent");
+        classFragment = GameClassFragment.newInstance("match_parent", "match_parent");
+        raceFragment = RaceFragment.newInstance("match_parent", "match_parent");
+        menuFragment = MenuFragment.newInstance("match_parent", "match_parent");
+
 
         setTitle(R.string.menu_init);
         FragmentManager fm = getFragmentManager();
 
         if (savedInstanceState == null) {
-            fm.beginTransaction().replace(R.id.container, MenuFragment.newInstance("match_parent", "match_parent"), "title_section_1").commit();
+            fm.beginTransaction().replace(R.id.container, menuFragment, "title_section_1").commit();
         }
-
-
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mLeftDrawer = (ListView) findViewById(R.id.navigation_drawer_left);
         mRightDrawer = (ListView) findViewById(R.id.navigation_drawer_right);
@@ -133,5 +153,7 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         mDrawerToggle.syncState();
+
+        creatorCntl = new CreatorCntl();
     }
 }
