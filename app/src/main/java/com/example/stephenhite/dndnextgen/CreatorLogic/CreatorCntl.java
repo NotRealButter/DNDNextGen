@@ -65,6 +65,9 @@ public class CreatorCntl implements Parcelable {
     public void saveCharacter(Context context) {
         FileOutputStream saveCharacter = null;
         ObjectOutputStream objectOutputStream = null;
+        charID = "char" + userCharacter.getName();
+        fileExt = ".dndng";
+        filePath = charID + fileExt;
 
         try {
             saveCharacter = context.openFileOutput(filePath, Context.MODE_PRIVATE);
