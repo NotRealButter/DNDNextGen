@@ -104,8 +104,7 @@ public class CharCreateActivity extends ActionBarActivity {
                 setTitle(mNavigationItems.get(position).mTitle);
 //                Toast.makeText(getBaseContext(), "AbilityScore", Toast.LENGTH_SHORT).show();
             case 4:
-                creatorCntl.saveCharacter(this.getBaseContext());
-                Toast.makeText(getBaseContext(), "saved", Toast.LENGTH_SHORT).show();
+//                creatorCntl.saveCharacter(this.getBaseContext());
         }
 
         mRightDrawer.setItemChecked(position, true);

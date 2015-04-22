@@ -20,8 +20,10 @@ public class CreatorCntl implements Parcelable {
     private final String charFilePath = "character_saves";
     private String charID = "char" + userCharacter.getName();
     private String fileExt = ".dndng";
-    Context context = this.context;
     public String filePath = charFilePath + charID + fileExt;
+
+    private Race human, elf, halfling, halfOrc, halfElf, dwarf, tiefling, eladrin, dragonBorn;
+    InGameClass barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, wizard;
 
 
     public Object loadCharacter(Context context) {
@@ -33,7 +35,6 @@ public class CreatorCntl implements Parcelable {
             charInput = new ObjectInputStream(saveInput);
             userCharacter = (UserCharacter) charInput.readObject();
             saveInput.close();
-
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
