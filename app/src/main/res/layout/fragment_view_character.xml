@@ -92,6 +92,15 @@
                 android:id="@+id/character_weight_box"
                 android:layout_alignTop="@+id/character_alignment_box"
                 android:layout_alignStart="@+id/character_height_box" />
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/character_loader"
+                android:layout_below="@+id/character_race_box"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="41dp"
+                android:choiceMode="singleChoice" />
         </RelativeLayout>
     </FrameLayout>
 

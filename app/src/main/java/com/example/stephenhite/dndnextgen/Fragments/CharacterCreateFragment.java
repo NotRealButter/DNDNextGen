@@ -29,6 +29,7 @@ public class CharacterCreateFragment extends Fragment implements AdapterView.OnI
     CharCreateActivity characterCreateActivity;
 
     View v;
+    NumberPicker ageBox;
 
     public static CharacterCreateFragment newInstance(String param1, String param2) {
         CharacterCreateFragment fragment = new CharacterCreateFragment();
@@ -59,6 +60,7 @@ public class CharacterCreateFragment extends Fragment implements AdapterView.OnI
 
         characterCreateActivity = (CharCreateActivity) getActivity();
 
+        ageBox = (NumberPicker) v.findViewById(R.id.character_age_field);
         alignmentSpinner = (Spinner) v.findViewById(R.id.character_alignment_spinner);
         weightPicker = (NumberPicker) v.findViewById(R.id.character_weight_picker);
         heightPicker = (NumberPicker) v.findViewById(R.id.character_height_picker);
@@ -66,6 +68,10 @@ public class CharacterCreateFragment extends Fragment implements AdapterView.OnI
         ArrayAdapter<CharSequence> alignmentAdapter = ArrayAdapter.createFromResource(this.getActivity(), R.array.alignment_array, android.R.layout.simple_spinner_item);
         alignmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         alignmentSpinner.setAdapter(alignmentAdapter);
+
+        ageBox.setMinValue(10);
+        ageBox.setMaxValue(1000);
+        ageBox.setValue(21);
 
         heightPicker.setMinValue(48);
         heightPicker.setMaxValue(120);
@@ -86,18 +92,20 @@ public class CharacterCreateFragment extends Fragment implements AdapterView.OnI
     public void onDetach() {
         super.onDetach();
         TextView nameBox = (TextView) v.findViewById(R.id.character_name_field);
-        TextView ageBox = (TextView) v.findViewById(R.id.character_age_field);
+        NumberPicker ageBox = (NumberPicker) v.findViewById(R.id.character_age_field);
         NumberPicker heightPicker = (NumberPicker) v.findViewById(R.id.character_height_picker);
         NumberPicker weightPicker = (NumberPicker) v.findViewById(R.id.character_weight_picker);
         Spinner alignmentBox = (Spinner) v.findViewById(R.id.character_alignment_spinner);
 
         characterCreateActivity.creatorCntl.userCharacter.setName(nameBox.getText().toString());
-        characterCreateActivity.creatorCntl.userCharacter.setAge(Integer.parseInt(ageBox.getText().toString()));
+        characterCreateActivity.creatorCntl.userCharacter.setAge(ageBox.getValue());
         characterCreateActivity.creatorCntl.userCharacter.setHeight(heightPicker.getValue());
         characterCreateActivity.creatorCntl.userCharacter.setWeight(weightPicker.getValue());
         characterCreateActivity.creatorCntl.userCharacter.setAlignment(alignmentBox.getSelectedItem().toString());
 
         mListener = null;
+
+
     }
 
     @Override

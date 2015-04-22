@@ -4,11 +4,15 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
  * Created by Stephen Hite on 4/14/2015.
@@ -17,14 +21,28 @@ public class CreatorCntl implements Parcelable {
     public UserCharacter userCharacter = new UserCharacter();
 
     private String path = "/sdcard/";
-    private final String charFilePath = "character_saves";
+    private final String charFilePath = "/character_saves/";
     private String charID = "char" + userCharacter.getName();
     private String fileExt = ".dndng";
-    public String filePath = charFilePath + charID + fileExt;
+    public String filePath = charID + fileExt;
+    public ArrayList<String> fileNames = new ArrayList<String>();
 
     private Race human, elf, halfling, halfOrc, halfElf, dwarf, tiefling, eladrin, dragonBorn;
     InGameClass barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, wizard;
 
+    public File[] listFilesMatching(File root, String regex) {
+        if (!root.isDirectory()) {
+            throw new IllegalArgumentException(root + "is not directory");
+        }
+        final Pattern p = Pattern.compile(regex);
+        return root.listFiles(new FileFilter() {
+            @Override
+            public boolean accept(File file) {
+                fileNames.add(file.getName());
+                return p.matcher(file.getName()).matches();
+            }
+        });
+    }
 
     public Object loadCharacter(Context context) {
         FileInputStream saveInput = null;

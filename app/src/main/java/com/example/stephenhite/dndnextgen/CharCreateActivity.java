@@ -206,7 +206,7 @@ public class CharCreateActivity extends ActionBarActivity {
 
     public void HandleCreateCharacter(View view) {
         TextView nameBox = (TextView) findViewById(R.id.character_name_field);
-        TextView ageBox = (TextView) findViewById(R.id.character_age_field);
+        NumberPicker ageBox = (NumberPicker) findViewById(R.id.character_age_field);
         NumberPicker heightPicker = (NumberPicker) findViewById(R.id.character_height_picker);
         NumberPicker weightPicker = (NumberPicker) findViewById(R.id.character_weight_picker);
         Spinner raceBox = (Spinner) findViewById(R.id.raceSpinner);
@@ -214,7 +214,7 @@ public class CharCreateActivity extends ActionBarActivity {
         Spinner alignmentBox = (Spinner) findViewById(R.id.character_alignment_spinner);
 
         creatorCntl.userCharacter.setName(nameBox.getText().toString());
-        creatorCntl.userCharacter.setAge(Integer.parseInt(ageBox.getText().toString()));
+        creatorCntl.userCharacter.setAge(ageBox.getValue());
         creatorCntl.userCharacter.setHeight(heightPicker.getValue());
         creatorCntl.userCharacter.setWeight(weightPicker.getValue());
 //        creatorCntl.userCharacter.setRace(raceBox.getSelectedItem().toString());

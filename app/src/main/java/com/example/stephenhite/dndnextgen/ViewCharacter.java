@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import com.example.stephenhite.dndnextgen.Fragments.MenuFragment;
 import com.example.stephenhite.dndnextgen.Fragments.RaceFragment;
 import com.example.stephenhite.dndnextgen.Fragments.ViewCharacterFragment;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -96,12 +98,10 @@ public class ViewCharacter extends ActionBarActivity {
     private void selectItemFromLeftDrawer(int position) {
         switch (position) {
             case 0:
-                Intent mainIntent = new Intent(mDrawerLayout.getContext(), MainActivity.class);
                 startActivity(mainIntent);
                 finish();
                 break;
             case 1:
-                Intent createIntent = new Intent(mDrawerLayout.getContext(), CharCreateActivity.class);
                 startActivity(createIntent);
                 finish();
                 break;
@@ -109,7 +109,6 @@ public class ViewCharacter extends ActionBarActivity {
                 Toast.makeText(getBaseContext(), "You're Already There!", Toast.LENGTH_SHORT).show();
                 break;
             case 3:
-                Intent importIntent = new Intent(mDrawerLayout.getContext(), ImportCharacter.class);
                 startActivity(importIntent);
                 finish();
         }
@@ -153,9 +152,10 @@ public class ViewCharacter extends ActionBarActivity {
         menuFragment = MenuFragment.newInstance("match_parent", "match_parent");
 
         FragmentManager fm = getFragmentManager();
-
-
+        {
             fm.beginTransaction().replace(R.id.container, ViewCharacterFragment.newInstance("match_parent", "match_parent"), "title_section_1").commit();
+        }
+
 
         mLeftDrawer = (ListView) findViewById(R.id.navigation_drawer_left);
         mRightDrawer = (ListView) findViewById(R.id.navigation_drawer_right);
@@ -211,6 +211,11 @@ public class ViewCharacter extends ActionBarActivity {
         TextView raceBox = (TextView) findViewById(R.id.character_race_box);
         TextView classBox = (TextView) findViewById(R.id.character_class_box);
         TextView alignmentBox = (TextView) findViewById(R.id.character_alignment_box);
+        ListView characterLoader = (ListView) findViewById(R.id.character_loader);
+        creatorCntl.listFilesMatching(new File(this.getBaseContext().getFilesDir().getPath()), ".*");
+        characterLoader.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, creatorCntl.fileNames));
+
+
 
         creatorCntl.loadCharacter(this.getBaseContext());
 

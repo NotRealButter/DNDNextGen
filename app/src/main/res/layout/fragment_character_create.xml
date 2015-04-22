@@ -25,15 +25,15 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
 
-    <EditText
+    <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/character_age_field"
+        android:layout_marginTop="35dp"
         android:layout_below="@+id/character_age_label"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/character_weight_picker" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,8 +51,8 @@
         android:text="Height"
         android:id="@+id/character_height_label"
         android:clickable="true"
-        android:layout_below="@+id/character_age_field"
-        android:layout_alignEnd="@+id/character_height_picker" />
+        android:layout_above="@+id/character_age_field"
+        android:layout_toEndOf="@+id/character_name_label" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,9 +60,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Weight"
         android:id="@+id/character_weight_label"
-        android:layout_alignTop="@+id/character_height_label"
-        android:layout_toEndOf="@+id/character_name_label"
-        android:layout_marginStart="30dp" />
+        android:layout_above="@+id/character_age_field"
+        android:layout_toEndOf="@+id/character_height_picker" />
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -76,8 +75,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/character_height_picker"
         android:layout_marginRight="21dp"
-        android:layout_below="@+id/character_height_label"
-        android:layout_toStartOf="@+id/character_weight_label" />
+        android:layout_alignTop="@+id/character_age_field"
+        android:layout_alignStart="@+id/character_height_label" />
 
     <Spinner
         android:layout_width="wrap_content"
