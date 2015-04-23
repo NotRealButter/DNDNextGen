@@ -45,11 +45,14 @@ public class ViewCharacter extends ActionBarActivity {
     RaceFragment raceFragment;
     MenuFragment menuFragment;
     GameClassFragment classFragment;
+    ViewCharacterFragment viewCharacterFragment;
 
     Intent mainIntent;
     Intent createIntent;
     Intent viewIntent;
     Intent importIntent;
+
+    ListView characterLoader;
 
     CreatorCntl creatorCntl;
 
@@ -135,8 +138,13 @@ public class ViewCharacter extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void loadCharacter(int position) {
+        creatorCntl.loadCharacter(this.getBaseContext(), creatorCntl.fileNames.get(position));
+//        creatorCntl.fileNames.get(position);
+    }
+
     public void initMenus(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_view_character);
+        setContentView(R.layout.fragment_view_character);
         setTitle(R.string.menu_init);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -150,11 +158,20 @@ public class ViewCharacter extends ActionBarActivity {
         classFragment = GameClassFragment.newInstance("match_parent", "match_parent");
         raceFragment = RaceFragment.newInstance("match_parent", "match_parent");
         menuFragment = MenuFragment.newInstance("match_parent", "match_parent");
+        viewCharacterFragment = ViewCharacterFragment.newInstance("match_parent", "match_parent");
 
-        FragmentManager fm = getFragmentManager();
-        {
-            fm.beginTransaction().replace(R.id.container, ViewCharacterFragment.newInstance("match_parent", "match_parent"), "title_section_1").commit();
-        }
+        characterLoader = (ListView) findViewById(R.id.character_loader);
+        characterLoader.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                loadCharacter(position);
+            }
+        });
+//
+//        FragmentManager fm = getFragmentManager();
+//        {
+//            fm.beginTransaction().replace(R.id.container, viewCharacterFragment, "title_section_1").commit();
+//        }
 
 
         mLeftDrawer = (ListView) findViewById(R.id.navigation_drawer_left);
@@ -168,10 +185,9 @@ public class ViewCharacter extends ActionBarActivity {
         mNavigationItems.add(new NavItem("View A Character", "See What You've Done"));
         mNavigationItems.add(new NavItem("Import A Character", "I've Prepared This Ahead Of Time"));
 
-        mCreationItems.add(new NavItem("Character Info", "License and Registration"));
+        mCreationItems.add(new NavItem("Load Characters", "What you've done"));
         mCreationItems.add(new NavItem("Race", "Humans, Elves and Gnomes, oh my!"));
-        mCreationItems.add(new NavItem("Class", "Who Is Your Daddy, What does he do?"));
-        mCreationItems.add(new NavItem("Ability Score", "Do you Even Lift?"));
+
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
 
@@ -211,6 +227,7 @@ public class ViewCharacter extends ActionBarActivity {
         TextView raceBox = (TextView) findViewById(R.id.character_race_box);
         TextView classBox = (TextView) findViewById(R.id.character_class_box);
         TextView alignmentBox = (TextView) findViewById(R.id.character_alignment_box);
+
         ListView characterLoader = (ListView) findViewById(R.id.character_loader);
         creatorCntl.listFilesMatching(new File(this.getBaseContext().getFilesDir().getPath()), ".*");
         characterLoader.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, creatorCntl.fileNames));

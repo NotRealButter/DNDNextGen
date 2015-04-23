@@ -27,10 +27,15 @@ public class CreatorCntl implements Parcelable {
     public String filePath = charID + fileExt;
     public ArrayList<String> fileNames = new ArrayList<String>();
 
+    public String currentSave = null;
+
     private Race human, elf, halfling, halfOrc, halfElf, dwarf, tiefling, eladrin, dragonBorn;
     InGameClass barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, wizard;
 
     public File[] listFilesMatching(File root, String regex) {
+        if (fileNames != null) {
+            fileNames.clear();
+        }
         if (!root.isDirectory()) {
             throw new IllegalArgumentException(root + "is not directory");
         }
@@ -50,6 +55,24 @@ public class CreatorCntl implements Parcelable {
 
         try {
             saveInput = context.openFileInput(filePath);
+            charInput = new ObjectInputStream(saveInput);
+            userCharacter = (UserCharacter) charInput.readObject();
+            saveInput.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    public Object loadCharacter(Context context, String fileName) {
+        FileInputStream saveInput = null;
+        ObjectInputStream charInput = null;
+        currentSave = fileName;
+
+        try {
+            saveInput = context.openFileInput(fileName);
             charInput = new ObjectInputStream(saveInput);
             userCharacter = (UserCharacter) charInput.readObject();
             saveInput.close();

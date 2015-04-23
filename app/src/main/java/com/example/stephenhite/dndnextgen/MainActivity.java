@@ -46,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
     Intent viewIntent;
     Intent importIntent;
 
-    static CreatorCntl creatorCntl = new CreatorCntl();
+    public static CreatorCntl creatorCntl = new CreatorCntl();
 
 
 
@@ -71,9 +71,6 @@ public class MainActivity extends ActionBarActivity {
     private void selectItemFromLeftDrawer(int position) {
         switch (position) {
             case 0:
-//                Intent mainIntent = new Intent(mDrawerLayout.getContext(),MainActivity.class);
-//                startActivity(mainIntent);
-//                break;
                 Toast.makeText(getBaseContext(), "You're Already There!", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
@@ -83,9 +80,11 @@ public class MainActivity extends ActionBarActivity {
             case 2:
                 startActivity(viewIntent);
                 finish();
+                break;
             case 3:
                 startActivity(importIntent);
                 finish();
+                break;
         }
 
         mRightDrawer.setItemChecked(position, true);
@@ -113,6 +112,7 @@ public class MainActivity extends ActionBarActivity {
         if (savedInstanceState == null) {
             fm.beginTransaction().replace(R.id.container, menuFragment, "title_section_1").commit();
         }
+
 
         mLeftDrawer = (ListView) findViewById(R.id.navigation_drawer_left);
         mRightDrawer = (ListView) findViewById(R.id.navigation_drawer_right);
