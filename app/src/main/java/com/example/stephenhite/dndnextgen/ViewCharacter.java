@@ -140,7 +140,7 @@ public class ViewCharacter extends ActionBarActivity {
 
     public void loadCharacter(int position) {
         creatorCntl.loadCharacter(this.getBaseContext(), creatorCntl.fileNames.get(position));
-//        creatorCntl.fileNames.get(position);
+        updateView();
     }
 
     public void initMenus(Bundle savedInstanceState) {
@@ -167,11 +167,6 @@ public class ViewCharacter extends ActionBarActivity {
                 loadCharacter(position);
             }
         });
-//
-//        FragmentManager fm = getFragmentManager();
-//        {
-//            fm.beginTransaction().replace(R.id.container, viewCharacterFragment, "title_section_1").commit();
-//        }
 
 
         mLeftDrawer = (ListView) findViewById(R.id.navigation_drawer_left);
@@ -219,7 +214,7 @@ public class ViewCharacter extends ActionBarActivity {
         this.creatorCntl = MainActivity.creatorCntl;
     }
 
-    public void ViewCreateCharacter(View view) {
+    public void updateView() {
         TextView nameBox = (TextView) findViewById(R.id.character_name_box);
         TextView ageBox = (TextView) findViewById(R.id.character_age_box);
         TextView heightBox = (TextView) findViewById(R.id.character_height_box);
@@ -228,14 +223,6 @@ public class ViewCharacter extends ActionBarActivity {
         TextView classBox = (TextView) findViewById(R.id.character_class_box);
         TextView alignmentBox = (TextView) findViewById(R.id.character_alignment_box);
 
-        ListView characterLoader = (ListView) findViewById(R.id.character_loader);
-        creatorCntl.listFilesMatching(new File(this.getBaseContext().getFilesDir().getPath()), ".*");
-        characterLoader.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, creatorCntl.fileNames));
-
-
-
-        creatorCntl.loadCharacter(this.getBaseContext());
-
         nameBox.setText(creatorCntl.userCharacter.getName());
         ageBox.setText(Integer.valueOf(creatorCntl.userCharacter.getAge()).toString());
         heightBox.setText(Integer.valueOf(creatorCntl.userCharacter.getHeight()).toString());
@@ -243,7 +230,14 @@ public class ViewCharacter extends ActionBarActivity {
         raceBox.setText(creatorCntl.userCharacter.getRace());
         classBox.setText(creatorCntl.userCharacter.getClass1());
         alignmentBox.setText(creatorCntl.userCharacter.getAlignment());
+    }
 
+    public void ViewCreateCharacter(View view) {
+        ListView characterLoader = (ListView) findViewById(R.id.character_loader);
+        creatorCntl.listFilesMatching(new File(this.getBaseContext().getFilesDir().getPath()), ".*");
+        characterLoader.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, creatorCntl.fileNames));
 
+        creatorCntl.loadCharacter(this.getBaseContext());
+        updateView();
     }
 }
