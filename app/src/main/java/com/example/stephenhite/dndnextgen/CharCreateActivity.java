@@ -222,13 +222,13 @@ public class CharCreateActivity extends ActionBarActivity {
 
         creatorCntl.saveCharacter(this.getBaseContext());
     }
-//
-//    public void HandleClassChange(View view) {
-//        Spinner classBox = (Spinner) findViewById(R.id.classSpinner);
-//        creatorCntl.userCharacter.setClass1(classBox.getSelectedItem().toString());
-//
-//        creatorCntl.saveCharacter(this.getBaseContext());
-//    }
+
+    public void HandleClassChange(View view) {
+        Spinner classBox = (Spinner) findViewById(R.id.classSpinner);
+        creatorCntl.userCharacter.setClass1(classBox.getSelectedItem().toString());
+
+        creatorCntl.saveCharacter(this.getBaseContext());
+    }
 //
 //    private class MyPagerAdapter extends FragmentPagerAdapter {
 //
