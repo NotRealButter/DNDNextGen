@@ -1,8 +1,9 @@
 package com.example.stephenhite.dndnextgen.Fragments;
 
-import android.app.Fragment;
+
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.stephenhite.dndnextgen.CharCreateActivity;
 import com.example.stephenhite.dndnextgen.R;
@@ -91,21 +91,7 @@ public class CharacterCreateFragment extends Fragment implements AdapterView.OnI
     @Override
     public void onDetach() {
         super.onDetach();
-        TextView nameBox = (TextView) v.findViewById(R.id.character_name_field);
-        NumberPicker ageBox = (NumberPicker) v.findViewById(R.id.character_age_field);
-        NumberPicker heightPicker = (NumberPicker) v.findViewById(R.id.character_height_picker);
-        NumberPicker weightPicker = (NumberPicker) v.findViewById(R.id.character_weight_picker);
-        Spinner alignmentBox = (Spinner) v.findViewById(R.id.character_alignment_spinner);
-
-        characterCreateActivity.creatorCntl.userCharacter.setName(nameBox.getText().toString());
-        characterCreateActivity.creatorCntl.userCharacter.setAge(ageBox.getValue());
-        characterCreateActivity.creatorCntl.userCharacter.setHeight(heightPicker.getValue());
-        characterCreateActivity.creatorCntl.userCharacter.setWeight(weightPicker.getValue());
-        characterCreateActivity.creatorCntl.userCharacter.setAlignment(alignmentBox.getSelectedItem().toString());
-
         mListener = null;
-
-
     }
 
     @Override

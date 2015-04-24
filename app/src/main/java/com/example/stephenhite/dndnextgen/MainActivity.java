@@ -1,8 +1,8 @@
 package com.example.stephenhite.dndnextgen;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
-
     ArrayList<NavItem> mNavigationItems = new ArrayList<>();
     ArrayList<NavItem> mCreationItems = new ArrayList<>();
 
@@ -94,7 +93,9 @@ public class MainActivity extends ActionBarActivity {
 
     public void initMenus(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         mainIntent = new Intent(mDrawerLayout.getContext(), MainActivity.class);
         createIntent = new Intent(mDrawerLayout.getContext(), CharCreateActivity.class);
         viewIntent = new Intent(mDrawerLayout.getContext(), ViewCharacter.class);
@@ -107,7 +108,7 @@ public class MainActivity extends ActionBarActivity {
 
 
         setTitle(R.string.menu_init);
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
 
         if (savedInstanceState == null) {
             fm.beginTransaction().replace(R.id.container, menuFragment, "title_section_1").commit();

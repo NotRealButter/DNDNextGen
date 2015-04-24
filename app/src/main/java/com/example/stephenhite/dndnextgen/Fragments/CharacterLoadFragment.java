@@ -1,28 +1,29 @@
 package com.example.stephenhite.dndnextgen.Fragments;
 
-import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import com.example.stephenhite.dndnextgen.R;
 
-public class ImportCharacterFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+
+public class CharacterLoadFragment extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-
-    public static ImportCharacterFragment newInstance(String param1, String param2) {
-        ImportCharacterFragment fragment = new ImportCharacterFragment();
+    public static CharacterLoadFragment newInstance(String param1, String param2) {
+        CharacterLoadFragment fragment = new CharacterLoadFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -30,7 +31,8 @@ public class ImportCharacterFragment extends Fragment implements AdapterView.OnI
         return fragment;
     }
 
-    public ImportCharacterFragment() {
+    public CharacterLoadFragment() {
+        // Required empty public constructor
     }
 
     @Override
@@ -45,36 +47,18 @@ public class ImportCharacterFragment extends Fragment implements AdapterView.OnI
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_import_character, container, false);
-    }
-
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+        return inflater.inflate(R.layout.fragment_load_character, container, false);
     }
 
     public interface OnFragmentInteractionListener {
+
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
     }
 
 }

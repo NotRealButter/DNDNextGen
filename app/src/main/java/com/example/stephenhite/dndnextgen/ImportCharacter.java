@@ -1,9 +1,9 @@
 package com.example.stephenhite.dndnextgen;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -80,7 +80,7 @@ public class ImportCharacter extends ActionBarActivity {
     }
 
     private void selectItemFromRightDrawer(int position) {
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch (position) {
             case 0:
@@ -148,7 +148,7 @@ public class ImportCharacter extends ActionBarActivity {
     public void initMenus(Bundle savedInstanceState) {
         setContentView(R.layout.activity_import_character);
         setTitle(R.string.menu_init);
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 

@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.example.stephenhite.dndnextgen.R;
 
-public class RaceFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class EditRaceFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -32,7 +32,7 @@ public class RaceFragment extends Fragment implements AdapterView.OnItemSelected
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.race_fragment, container, false);
+        v = inflater.inflate(R.layout.fragment_edit_race, container, false);
         raceSpinner = (Spinner) v.findViewById(R.id.raceSpinner);
         ArrayAdapter<CharSequence> raceAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.race_array, R.layout.spinner_item);
         raceAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
@@ -42,8 +42,8 @@ public class RaceFragment extends Fragment implements AdapterView.OnItemSelected
         return v;
     }
 
-    public static RaceFragment newInstance(String param1, String param2) {
-        RaceFragment fragment = new RaceFragment();
+    public static EditRaceFragment newInstance(String param1, String param2) {
+        EditRaceFragment fragment = new EditRaceFragment();
 
 
         Bundle args = new Bundle();
@@ -54,7 +54,7 @@ public class RaceFragment extends Fragment implements AdapterView.OnItemSelected
         return fragment;
     }
 
-    public RaceFragment() {
+    public EditRaceFragment() {
 
     }
 

@@ -1,8 +1,8 @@
 package com.example.stephenhite.dndnextgen;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -60,7 +60,6 @@ public class CharCreateActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_char_create, menu);
         return true;
     }
@@ -70,7 +69,6 @@ public class CharCreateActivity extends ActionBarActivity {
 
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -80,7 +78,7 @@ public class CharCreateActivity extends ActionBarActivity {
 
 
     private void selectItemFromRightDrawer(int position) {
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch (position) {
             case 0:
@@ -102,9 +100,8 @@ public class CharCreateActivity extends ActionBarActivity {
                 fragmentManager.beginTransaction().replace(R.id.container, classFragment, "title_section_2")
                         .commit();
                 setTitle(mNavigationItems.get(position).mTitle);
-//                Toast.makeText(getBaseContext(), "AbilityScore", Toast.LENGTH_SHORT).show();
             case 4:
-//                creatorCntl.saveCharacter(this.getBaseContext());
+                creatorCntl.saveCharacter(this.getBaseContext());
         }
 
         mRightDrawer.setItemChecked(position, true);
@@ -150,12 +147,10 @@ public class CharCreateActivity extends ActionBarActivity {
         classFragment = GameClassFragment.newInstance("match_parent", "match_parent");
         raceFragment = RaceFragment.newInstance("match_parent", "match_parent");
         menuFragment = MenuFragment.newInstance("match_parent", "match_parent");
-
-
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
 
         if (savedInstanceState == null) {
-            fm.beginTransaction().replace(R.id.container, CharacterCreateFragment.newInstance("match_parent", "match_parent"), "title_section_1").commit();
+            fm.beginTransaction().replace(R.id.container, characterCreateFragment).commit();
         }
 
 
@@ -201,6 +196,7 @@ public class CharCreateActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
+
         this.creatorCntl = MainActivity.creatorCntl;
     }
 
@@ -209,16 +205,12 @@ public class CharCreateActivity extends ActionBarActivity {
         NumberPicker ageBox = (NumberPicker) findViewById(R.id.character_age_field);
         NumberPicker heightPicker = (NumberPicker) findViewById(R.id.character_height_picker);
         NumberPicker weightPicker = (NumberPicker) findViewById(R.id.character_weight_picker);
-        Spinner raceBox = (Spinner) findViewById(R.id.raceSpinner);
-        Spinner classBox = (Spinner) findViewById(R.id.classSpinner);
         Spinner alignmentBox = (Spinner) findViewById(R.id.character_alignment_spinner);
 
         creatorCntl.userCharacter.setName(nameBox.getText().toString());
         creatorCntl.userCharacter.setAge(ageBox.getValue());
         creatorCntl.userCharacter.setHeight(heightPicker.getValue());
         creatorCntl.userCharacter.setWeight(weightPicker.getValue());
-//        creatorCntl.userCharacter.setRace(raceBox.getSelectedItem().toString());
-//        creatorCntl.userCharacter.setClass1(classBox.getSelectedItem().toString());
         creatorCntl.userCharacter.setAlignment(alignmentBox.getSelectedItem().toString());
 
         creatorCntl.saveCharacter(this.getBaseContext());
@@ -230,11 +222,33 @@ public class CharCreateActivity extends ActionBarActivity {
 
         creatorCntl.saveCharacter(this.getBaseContext());
     }
-
-    public void HandleClassChange(View view) {
-        Spinner classBox = (Spinner) findViewById(R.id.classSpinner);
-        creatorCntl.userCharacter.setClass1(classBox.getSelectedItem().toString());
-
-        creatorCntl.saveCharacter(this.getBaseContext());
-    }
+//
+//    public void HandleClassChange(View view) {
+//        Spinner classBox = (Spinner) findViewById(R.id.classSpinner);
+//        creatorCntl.userCharacter.setClass1(classBox.getSelectedItem().toString());
+//
+//        creatorCntl.saveCharacter(this.getBaseContext());
+//    }
+//
+//    private class MyPagerAdapter extends FragmentPagerAdapter {
+//
+//        public MyPagerAdapter(FragmentManager fm) {
+//            super(fm);
+//        }
+//
+//        @Override
+//        public Fragment getItem(int pos) {
+//            switch(pos) {
+//
+//                case 0: return characterCreateFragment;
+//                case 1: return raceFragment;
+//                case 2: return classFragment;
+//            }
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            return 5;
+//        }
+//    }
 }

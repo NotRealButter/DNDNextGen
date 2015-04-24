@@ -1,8 +1,7 @@
 package com.example.stephenhite.dndnextgen.CreatorLogic;
 
 import android.content.Context;
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.widget.Spinner;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -14,10 +13,11 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+
 /**
  * Created by Stephen Hite on 4/14/2015.
  */
-public class CreatorCntl implements Parcelable {
+public class CreatorCntl {
     public UserCharacter userCharacter = new UserCharacter();
 
     private String path = "/sdcard/";
@@ -100,20 +100,18 @@ public class CreatorCntl implements Parcelable {
         } catch (IOException x) {
             x.printStackTrace();
         }
-
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public int findIndexOf(String compareVal, Spinner source) {
+        int index = 0;
+        for (int i = 0; i < source.getCount(); i++) {
+            if (source.getItemAtPosition(i).toString().equals(compareVal)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeValue(userCharacter);
-    }
 
-    public void readFromParcel(Parcel in) {
-        in.readParcelable(CreatorCntl.class.getClassLoader());
-    }
 }

@@ -1,9 +1,9 @@
 package com.example.stephenhite.dndnextgen.Fragments;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,50 +86,50 @@ public class GameClassFragment extends Fragment implements AdapterView.OnItemSel
         switch (position) {
             case 0:
                 description.setText(R.string.barbarian_text);
-                image.setImageResource(R.drawable.human);
+                image.setImageResource(R.drawable.barbarian);
                 break;
             case 1:
                 description.setText(R.string.bard_text);
-                image.setImageResource(R.drawable.elf);
+                image.setImageResource(R.drawable.bard);
                 break;
             case 2:
-                image.setImageResource(R.drawable.halfling);
+                image.setImageResource(R.drawable.cleric);
                 description.setText(R.string.cleric_text);
                 break;
             case 3:
-                image.setImageResource(R.drawable.halforc);
+                image.setImageResource(R.drawable.druid);
                 description.setText(R.string.druid_text);
                 break;
             case 4:
-                image.setImageResource(R.drawable.halfelf);
+                image.setImageResource(R.drawable.fighter);
                 description.setText(R.string.fighter_text);
                 break;
             case 5:
                 description.setText(R.string.monk_text);
-                image.setImageResource(R.drawable.dwarf);
+                image.setImageResource(R.drawable.monk);
                 break;
             case 6:
                 description.setText(R.string.paladin_text);
-                image.setImageResource(R.drawable.tiefling);
+                image.setImageResource(R.drawable.paladin);
                 break;
             case 7:
                 description.setText(R.string.ranger_text);
-                image.setImageResource(R.drawable.eladrin);
+                image.setImageResource(R.drawable.ranger);
                 break;
             case 8:
-                image.setImageResource(R.drawable.dragonborn);
+                image.setImageResource(R.drawable.rogue);
                 description.setText(R.string.rogue_text);
                 break;
             case 9:
                 description.setText(R.string.sorcerer_text);
-                image.setImageResource(R.drawable.tiefling);
+                image.setImageResource(R.drawable.sorceror);
                 break;
             case 10:
                 description.setText(R.string.warlock_text);
-                image.setImageResource(R.drawable.eladrin);
+                image.setImageResource(R.drawable.magus);
                 break;
             case 11:
-                image.setImageResource(R.drawable.dragonborn);
+                image.setImageResource(R.drawable.wizard);
                 description.setText(R.string.wizard_text);
                 break;
         }

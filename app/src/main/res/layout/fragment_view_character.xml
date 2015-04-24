@@ -1,134 +1,108 @@
-<!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewCharacter">
+    tools:context="com.stephenhite.dndnextgen.Fragments.ViewCharacterFragment">
 
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!-- TODO: Update blank fragment layout -->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal|top">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Character Name"
+        android:id="@+id/character_name_label"
+        android:layout_gravity="left|top" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="CharacterName"
-                android:id="@+id/character_name_label"
-                android:layout_gravity="left|top" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/character_name_changer"
+        android:layout_below="@+id/character_name_label"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="62dp"
-                android:text="Character&apos;s Name"
-                android:id="@+id/character_name_box"
-                android:layout_gravity="left|top"
-                android:layout_below="@+id/character_name_label"
-                android:layout_alignParentStart="true" />
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/character_age_changer"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/character_age_label"
+        android:layout_alignParentStart="true" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Load Character"
-                android:id="@+id/load_character_button"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="57dp"
-                android:onClick="ViewCreateCharacter" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Character Age"
+        android:id="@+id/character_age_label"
+        android:layout_below="@+id/character_name_changer"
+        android:layout_alignParentStart="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="age"
-                android:id="@+id/character_age_box"
-                android:layout_below="@+id/character_name_box"
-                android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Height"
+        android:id="@+id/character_height_label"
+        android:clickable="true"
+        android:layout_above="@+id/character_age_changer"
+        android:layout_toEndOf="@+id/character_name_label" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="alignment"
-                android:id="@+id/character_alignment_box"
-                android:layout_below="@+id/character_age_box"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="36dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Weight"
+        android:id="@+id/character_weight_label"
+        android:layout_above="@+id/character_age_changer"
+        android:layout_toEndOf="@+id/character_height_changer" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="class"
-                android:id="@+id/character_class_box"
-                android:layout_below="@+id/character_alignment_box"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="34dp" />
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/character_weight_changer"
+        android:layout_alignTop="@+id/character_height_changer"
+        android:layout_alignStart="@+id/character_weight_label" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="race"
-                android:id="@+id/character_race_box"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true" />
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/character_height_changer"
+        android:layout_marginRight="21dp"
+        android:layout_alignTop="@+id/character_age_changer"
+        android:layout_alignStart="@+id/character_height_label" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="height"
-                android:id="@+id/character_height_box"
-                android:layout_alignBottom="@+id/character_age_box"
-                android:layout_toEndOf="@+id/character_name_label" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/character_alignment_changer"
+        android:spinnerMode="dialog"
+        android:layout_below="@+id/char_alignment_label"
+        android:layout_alignParentStart="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="weight"
-                android:id="@+id/character_weight_box"
-                android:layout_alignTop="@+id/character_alignment_box"
-                android:layout_alignStart="@+id/character_height_box" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Alignment"
+        android:id="@+id/char_alignment_label"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/character_height_changer"
+        android:layout_alignParentStart="true" />
 
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/character_loader"
-                android:layout_below="@+id/character_race_box"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="41dp"
-                android:choiceMode="singleChoice" />
-        </RelativeLayout>
-    </FrameLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Character"
+        android:id="@+id/save_button"
+        android:layout_below="@+id/character_alignment_changer"
+        android:layout_alignParentEnd="true"
+        android:onClick="HandleEditCharacter" />
 
-
-    <!--left nav Drawer-->
-    <ListView
-        android:id="@+id/navigation_drawer_left"
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:choiceMode="singleChoice"
-        android:textColor="#ffffff"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#ff3a8b88" />
-
-    <!--right nav Drawer-->
-    <ListView
-        android:id="@+id/navigation_drawer_right"
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:choiceMode="singleChoice"
-        android:textColor="#ffffff"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#ff3a8b88" />
-
-
-</android.support.v4.widget.DrawerLayout>
-
+</RelativeLayout>
