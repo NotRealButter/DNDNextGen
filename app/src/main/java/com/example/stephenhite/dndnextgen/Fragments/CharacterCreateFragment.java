@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 
-import com.example.stephenhite.dndnextgen.CharCreateActivity;
 import com.example.stephenhite.dndnextgen.R;
 
 public class CharacterCreateFragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -26,7 +25,6 @@ public class CharacterCreateFragment extends Fragment implements AdapterView.OnI
 
     NumberPicker heightPicker, weightPicker;
     Spinner alignmentSpinner;
-    CharCreateActivity characterCreateActivity;
 
     View v;
     NumberPicker ageBox;
@@ -57,8 +55,6 @@ public class CharacterCreateFragment extends Fragment implements AdapterView.OnI
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_character_create, container, false);
-
-        characterCreateActivity = (CharCreateActivity) getActivity();
 
         ageBox = (NumberPicker) v.findViewById(R.id.character_age_field);
         alignmentSpinner = (Spinner) v.findViewById(R.id.character_alignment_spinner);

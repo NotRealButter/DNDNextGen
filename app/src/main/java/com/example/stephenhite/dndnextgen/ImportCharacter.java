@@ -152,14 +152,15 @@ public class ImportCharacter extends ActionBarActivity {
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        characterCreateFragment = CharacterCreateFragment.newInstance("match_parent", "match_parent");
-        raceFragment = RaceFragment.newInstance("match_parent", "match_parent");
-        viewCharacterFragment = ViewCharacterFragment.newInstance("match_parent", "match_parent");
-
         mainIntent = new Intent(mDrawerLayout.getContext(), MainActivity.class);
         createIntent = new Intent(mDrawerLayout.getContext(), CharCreateActivity.class);
         viewIntent = new Intent(mDrawerLayout.getContext(), ViewCharacter.class);
         importIntent = new Intent(mDrawerLayout.getContext(), ImportCharacter.class);
+
+        characterCreateFragment = CharacterCreateFragment.newInstance("match_parent", "match_parent");
+        classFragment = GameClassFragment.newInstance("match_parent", "match_parent");
+        raceFragment = RaceFragment.newInstance("match_parent", "match_parent");
+        menuFragment = MenuFragment.newInstance("match_parent", "match_parent");
 
         mLeftDrawer = (ListView) findViewById(R.id.navigation_drawer_left);
         mRightDrawer = (ListView) findViewById(R.id.navigation_drawer_right);
