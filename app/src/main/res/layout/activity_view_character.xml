@@ -11,6 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_width="1520dp"
+            android:layout_height="1011dp"
+            android:id="@+id/imageView4"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/background"
+            android:adjustViewBounds="true"
+            android:tint="#daffffff" />
+
         <ListView
             android:id="@+id/character_loader"
             android:layout_width="fill_parent"

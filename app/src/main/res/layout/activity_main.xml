@@ -9,7 +9,19 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="1644dp"
+            android:layout_height="1093dp"
+            android:id="@+id/imageView3"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/menubg"
+            android:adjustViewBounds="true"
+            android:tint="#4fffffff"
+            android:cropToPadding="true"
+            android:contentDescription="" />
+    </FrameLayout>
 
 
     <!--left nav Drawer-->

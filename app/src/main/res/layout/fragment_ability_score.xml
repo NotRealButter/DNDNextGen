@@ -1,0 +1,123 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.stephenhite.dndnextgen.Fragments.AbilityScore">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|top"
+        android:id="@+id/fragment_ability_score">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Strength Value:"
+            android:id="@+id/str_view"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="35dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Strength Calc"
+            android:id="@+id/str_gen"
+            android:layout_marginEnd="39dp"
+            android:layout_below="@+id/str_view"
+            android:layout_alignParentEnd="true"
+            android:onClick="HandleStrChange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Dexterity Value:"
+            android:id="@+id/dex_view"
+            android:layout_below="@+id/str_gen"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dexterity Gen"
+            android:id="@+id/dex_gen"
+            android:layout_below="@+id/dex_view"
+            android:layout_alignEnd="@+id/str_gen"
+            android:onClick="HandleDexChange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Constitution Value:"
+            android:id="@+id/con_view"
+            android:layout_below="@+id/dex_gen"
+            android:layout_toStartOf="@+id/str_gen" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Constitution Gen"
+            android:id="@+id/con_gen"
+            android:layout_below="@+id/con_view"
+            android:layout_alignEnd="@+id/dex_gen"
+            android:onClick="HandleConChange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Intelligence Value:"
+            android:id="@+id/int_view"
+            android:layout_below="@+id/con_gen"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Intelligence Gen"
+            android:id="@+id/int_gen"
+            android:layout_below="@+id/int_view"
+            android:layout_alignEnd="@+id/con_gen"
+            android:onClick="HandleIntChange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Wisdom Value:"
+            android:id="@+id/wis_view"
+            android:layout_below="@+id/int_gen"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wisdom Gen"
+            android:id="@+id/wis_gen"
+            android:layout_below="@+id/wis_view"
+            android:layout_alignEnd="@+id/int_gen"
+            android:onClick="HandleWisChange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Charisma Value:"
+            android:id="@+id/cha_view"
+            android:layout_below="@+id/wis_gen"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Charisma Gen"
+            android:id="@+id/cha_gen"
+            android:layout_below="@+id/cha_view"
+            android:layout_alignEnd="@+id/wis_gen"
+            android:onClick="HandleChaChange" />
+    </RelativeLayout>
+</FrameLayout>

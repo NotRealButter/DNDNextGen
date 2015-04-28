@@ -4,105 +4,236 @@
     android:layout_height="match_parent"
     tools:context="com.stephenhite.dndnextgen.Fragments.ViewCharacterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:fillViewport="false">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Character Name"
-        android:id="@+id/character_name_label"
-        android:layout_gravity="left|top" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scroll_layout">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/character_name_changer"
-        android:layout_below="@+id/character_name_label"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Character Age"
+                android:id="@+id/character_age_label"
+                android:layout_below="@+id/character_name_changer"
+                android:layout_alignParentStart="true" />
 
-    <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/character_age_changer"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/character_age_label"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Height"
+                android:id="@+id/character_height_label"
+                android:clickable="true"
+                android:layout_above="@+id/character_age_changer"
+                android:layout_toEndOf="@+id/character_name_label" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Character Age"
-        android:id="@+id/character_age_label"
-        android:layout_below="@+id/character_name_changer"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Weight"
+                android:id="@+id/character_weight_label"
+                android:layout_above="@+id/character_age_changer"
+                android:layout_toEndOf="@+id/character_height_changer" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Height"
-        android:id="@+id/character_height_label"
-        android:clickable="true"
-        android:layout_above="@+id/character_age_changer"
-        android:layout_toEndOf="@+id/character_name_label" />
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/character_weight_changer"
+                android:layout_alignTop="@+id/character_height_changer"
+                android:layout_alignStart="@+id/character_weight_label" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Weight"
-        android:id="@+id/character_weight_label"
-        android:layout_above="@+id/character_age_changer"
-        android:layout_toEndOf="@+id/character_height_changer" />
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/character_height_changer"
+                android:layout_marginRight="21dp"
+                android:layout_alignTop="@+id/character_age_changer"
+                android:layout_alignStart="@+id/character_height_label" />
 
-    <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/character_weight_changer"
-        android:layout_alignTop="@+id/character_height_changer"
-        android:layout_alignStart="@+id/character_weight_label" />
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/character_alignment_changer"
+                android:spinnerMode="dialog"
+                android:layout_below="@+id/char_alignment_label"
+                android:layout_alignParentStart="true" />
 
-    <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/character_height_changer"
-        android:layout_marginRight="21dp"
-        android:layout_alignTop="@+id/character_age_changer"
-        android:layout_alignStart="@+id/character_height_label" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Alignment"
+                android:id="@+id/char_alignment_label"
+                android:layout_marginTop="38dp"
+                android:layout_below="@+id/character_height_changer"
+                android:layout_alignParentStart="true" />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/character_alignment_changer"
-        android:spinnerMode="dialog"
-        android:layout_below="@+id/char_alignment_label"
-        android:layout_alignParentStart="true" />
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/character_class_changer"
+                android:spinnerMode="dialog"
+                android:layout_below="@+id/char_class_label"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="bottom" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Alignment"
-        android:id="@+id/char_alignment_label"
-        android:layout_marginTop="38dp"
-        android:layout_below="@+id/character_height_changer"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Class"
+                android:id="@+id/char_class_label"
+                android:layout_below="@+id/character_alignment_changer"
+                android:layout_alignParentStart="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save Character"
-        android:id="@+id/save_button"
-        android:layout_below="@+id/character_alignment_changer"
-        android:layout_alignParentEnd="true"
-        android:onClick="HandleEditCharacter" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Character Name"
+                android:id="@+id/character_name_label"
+                android:layout_gravity="left|top" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:ems="10"
+                android:id="@+id/character_name_changer"
+                android:layout_below="@+id/character_name_label"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true" />
+
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/character_age_changer"
+                android:layout_marginTop="35dp"
+                android:layout_below="@+id/character_age_label"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Strength"
+                android:id="@+id/str_label"
+                android:layout_below="@+id/character_class_changer"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="276dp" />
+
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/str_picker"
+                android:layout_alignTop="@+id/str_label"
+                android:layout_alignEnd="@+id/str_label"
+                android:layout_marginTop="53dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Dexterity"
+                android:id="@+id/dex_label"
+                android:layout_below="@+id/character_class_changer"
+                android:layout_toEndOf="@+id/char_alignment_label" />
+
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dex_picker"
+                android:layout_alignTop="@+id/str_picker"
+                android:layout_alignStart="@+id/dex_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Constitution"
+                android:id="@+id/con_label"
+                android:layout_alignEnd="@+id/cha_view"
+                android:layout_alignBottom="@+id/dex_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Intelligence"
+                android:id="@+id/int_label"
+                android:layout_below="@+id/str_picker"
+                android:layout_alignStart="@+id/str_picker" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save Character"
+                android:id="@+id/save_button"
+                android:onClick="HandleEditCharacter"
+                android:layout_alignBottom="@+id/character_name_changer"
+                android:layout_alignEnd="@+id/character_weight_changer" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Wisdom"
+                android:id="@+id/wis_label"
+                android:layout_above="@+id/int_picker"
+                android:layout_toEndOf="@+id/character_age_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Charisma"
+                android:id="@+id/cha_view"
+                android:layout_below="@+id/con_picker"
+                android:layout_alignEnd="@+id/character_weight_changer" />
+
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/int_picker"
+                android:layout_below="@+id/int_label"
+                android:layout_alignStart="@+id/int_label" />
+
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/wis_picker"
+                android:layout_below="@+id/wis_label"
+                android:layout_alignStart="@+id/wis_label" />
+
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/con_picker"
+                android:layout_above="@+id/wis_label"
+                android:layout_alignStart="@+id/con_label" />
+
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cha_picker"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/cha_view" />
+
+        </RelativeLayout>
+    </ScrollView>
+
 
 </RelativeLayout>

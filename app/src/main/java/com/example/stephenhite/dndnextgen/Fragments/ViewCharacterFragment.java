@@ -31,9 +31,15 @@ public class ViewCharacterFragment extends Fragment {
     public NumberPicker ageBox;
     public NumberPicker heightBox;
     public NumberPicker weightBox;
-    //        TextView raceBox;
-//        TextView classBox;
+    public NumberPicker strBox;
+    public NumberPicker dexBox;
+    public NumberPicker conBox;
+    public NumberPicker intBox;
+    public NumberPicker wisBox;
+    public NumberPicker chaBox;
     public Spinner alignmentBox;
+    public Spinner classBox;
+
     CreatorCntl creatorCntl;
 
     // TODO: Rename and change types and number of parameters
@@ -70,13 +76,23 @@ public class ViewCharacterFragment extends Fragment {
         ageBox = (NumberPicker) view.findViewById(R.id.character_age_changer);
         heightBox = (NumberPicker) view.findViewById(R.id.character_height_changer);
         weightBox = (NumberPicker) view.findViewById(R.id.character_weight_changer);
-//         raceBox = (TextView) findViewById(R.id.character_race_box);
-//         classBox = (TextView) findViewById(R.id.character_class_box);
         alignmentBox = (Spinner) view.findViewById(R.id.character_alignment_changer);
+        classBox = (Spinner) view.findViewById(R.id.character_class_changer);
+
+        strBox = (NumberPicker) view.findViewById(R.id.str_picker);
+        dexBox = (NumberPicker) view.findViewById(R.id.dex_picker);
+        conBox = (NumberPicker) view.findViewById(R.id.con_picker);
+        intBox = (NumberPicker) view.findViewById(R.id.int_picker);
+        wisBox = (NumberPicker) view.findViewById(R.id.wis_picker);
+        chaBox = (NumberPicker) view.findViewById(R.id.cha_picker);
 
         ArrayAdapter<CharSequence> alignmentAdapter = ArrayAdapter.createFromResource(this.getActivity(), R.array.alignment_array, android.R.layout.simple_spinner_item);
         alignmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         alignmentBox.setAdapter(alignmentAdapter);
+
+        ArrayAdapter<CharSequence> classAdapter = ArrayAdapter.createFromResource(this.getActivity(), R.array.class_array, android.R.layout.simple_spinner_item);
+        classAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        classBox.setAdapter(classAdapter);
 
         ageBox.setMinValue(10);
         ageBox.setMaxValue(1000);
@@ -90,18 +106,48 @@ public class ViewCharacterFragment extends Fragment {
         weightBox.setMaxValue(2000);
         weightBox.setValue(200);
 
+        strBox.setMinValue(0);
+        strBox.setMaxValue(20);
+        strBox.setValue(12);
+
+        dexBox.setMinValue(0);
+        dexBox.setMaxValue(20);
+        dexBox.setValue(12);
+
+        conBox.setMinValue(0);
+        conBox.setMaxValue(20);
+        conBox.setValue(12);
+
+        intBox.setMinValue(0);
+        intBox.setMaxValue(20);
+        intBox.setValue(12);
+
+        wisBox.setMinValue(0);
+        wisBox.setMaxValue(20);
+        wisBox.setValue(12);
+
+        chaBox.setMinValue(0);
+        chaBox.setMaxValue(20);
+        chaBox.setValue(12);
+
         nameBox.setText(creatorCntl.userCharacter.getName());
         ageBox.setValue(Integer.valueOf(creatorCntl.userCharacter.getAge()));
         heightBox.setValue(Integer.valueOf(creatorCntl.userCharacter.getHeight()));
         weightBox.setValue(Integer.valueOf(creatorCntl.userCharacter.getWeight()));
 
-        alignmentBox.setSelection(creatorCntl.findIndexOf(creatorCntl.userCharacter.getAlignment(), alignmentBox));
+        strBox.setValue(Integer.valueOf(creatorCntl.userCharacter.getStrVal()));
+        dexBox.setValue(Integer.valueOf(creatorCntl.userCharacter.getDexVal()));
+        conBox.setValue(Integer.valueOf(creatorCntl.userCharacter.getConVal()));
+        intBox.setValue(Integer.valueOf(creatorCntl.userCharacter.getIntVal()));
+        wisBox.setValue(Integer.valueOf(creatorCntl.userCharacter.getWisVal()));
+        chaBox.setValue(Integer.valueOf(creatorCntl.userCharacter.getChaVal()));
 
+        alignmentBox.setSelection(creatorCntl.findIndexOf(creatorCntl.userCharacter.getAlignment(), alignmentBox));
+        classBox.setSelection(creatorCntl.findIndexOf(creatorCntl.userCharacter.getClass1(), classBox));
 
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -120,7 +166,6 @@ public class ViewCharacterFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 

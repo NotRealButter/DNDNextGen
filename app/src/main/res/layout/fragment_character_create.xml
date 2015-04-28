@@ -12,7 +12,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Character Name"
         android:id="@+id/character_name_label"
-        android:layout_gravity="left|top" />
+        android:layout_gravity="left|top"
+        android:backgroundTint="#89ffffff"
+        android:background="#8cffffff" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -23,7 +25,9 @@
         android:id="@+id/character_name_field"
         android:layout_below="@+id/character_name_label"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:backgroundTint="#89ffffff"
+        android:background="#8cffffff" />
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -33,7 +37,8 @@
         android:id="@+id/character_age_field"
         android:layout_marginTop="35dp"
         android:layout_below="@+id/character_age_label"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:backgroundTint="#89ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,7 +47,9 @@
         android:text="Character Age"
         android:id="@+id/character_age_label"
         android:layout_below="@+id/character_name_field"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:backgroundTint="#89ffffff"
+        android:background="#8cffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,7 +59,9 @@
         android:id="@+id/character_height_label"
         android:clickable="true"
         android:layout_above="@+id/character_age_field"
-        android:layout_toEndOf="@+id/character_name_label" />
+        android:layout_toEndOf="@+id/character_name_label"
+        android:backgroundTint="#89ffffff"
+        android:background="#8cffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,14 +70,17 @@
         android:text="Weight"
         android:id="@+id/character_weight_label"
         android:layout_above="@+id/character_age_field"
-        android:layout_toEndOf="@+id/character_height_picker" />
+        android:layout_toEndOf="@+id/character_height_picker"
+        android:backgroundTint="#89ffffff"
+        android:background="#8cffffff" />
 
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/character_weight_picker"
         android:layout_alignTop="@+id/character_height_picker"
-        android:layout_alignStart="@+id/character_weight_label" />
+        android:layout_alignStart="@+id/character_weight_label"
+        android:backgroundTint="#89ffffff" />
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -76,7 +88,8 @@
         android:id="@+id/character_height_picker"
         android:layout_marginRight="21dp"
         android:layout_alignTop="@+id/character_age_field"
-        android:layout_alignStart="@+id/character_height_label" />
+        android:layout_alignStart="@+id/character_height_label"
+        android:backgroundTint="#89ffffff" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -84,7 +97,9 @@
         android:id="@+id/character_alignment_spinner"
         android:spinnerMode="dialog"
         android:layout_below="@+id/char_alignment_label"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:backgroundTint="#89ffffff"
+        android:background="#8cffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -94,7 +109,9 @@
         android:id="@+id/char_alignment_label"
         android:layout_marginTop="38dp"
         android:layout_below="@+id/character_height_picker"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:backgroundTint="#89ffffff"
+        android:background="#8cffffff" />
 
     <Button
         android:layout_width="wrap_content"

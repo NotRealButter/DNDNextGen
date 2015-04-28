@@ -61,73 +61,6 @@ public class UserCharacter implements Serializable {
         this.health = health;
     }
 
-//    public InGameClass getClass1() {
-//        return class1;
-//    }
-//
-//    public void setClass1(String selectedClass)
-//    {
-//        switch(selectedClass.toLowerCase())
-//        {
-//            case "fighter":
-//                this.class1 = class1.fighter;
-//            case "barbarian":
-//                this.class1=class1.fighter;
-//            case "bard":
-//                this.class1=class1.bard;
-//            case "cleric":
-//                this.class1=class1.cleric;
-//            case "druid":
-//                this.class1=class1.druid;
-//            case "monk":
-//                this.class1 = class1.monk;
-//            case "paladin":
-//                this.class1=class1.paladin;
-//            case "ranger":
-//                this.class1=class1.ranger;
-//            case "rogue":
-//                this.class1=class1.rogue;
-//            case "sorceror":
-//                this.class1=class1.sorceror;
-//            case "wizard":
-//                this.class1=class1.wizard;
-//            case "oracle":
-//    this.class1=class1.oracle;                   }
-//    }
-//
-//    public InGameClass getClass2() {
-//        return class2;
-//    }
-//
-//    public void setClass2(String selectedClass) {
-//        switch (selectedClass.toLowerCase()) {
-//            case "fighter":
-//                this.class2 = class2.fighter;
-//            case "barbarian":
-//                this.class2 = class2.fighter;
-//            case "bard":
-//                this.class2 = class2.bard;
-//            case "cleric":
-//                this.class2 = class2.cleric;
-//            case "druid":
-//                this.class2 = class2.druid;
-//            case "monk":
-//                this.class2 = class2.monk;
-//            case "paladin":
-//                this.class2 = class2.paladin;
-//            case "ranger":
-//                this.class2 = class2.ranger;
-//            case "rogue":
-//                this.class2 = class2.rogue;
-//            case "sorceror":
-//                this.class2 = class2.sorceror;
-//            case "wizard":
-//                this.class2 = class2.wizard;
-//            case "oracle":
-//                this.class2 = class2.oracle;
-//        }
-//    }
-
     public int getAge() {
         return age;
     }
@@ -152,37 +85,7 @@ public class UserCharacter implements Serializable {
         this.alignment = alignment;
     }
 
-//    public Race getRace() {
-//        return race;
-//    }
-//
-//    public void setRace(String selectedRace) {
-//        switch (selectedRace.toLowerCase()) {
-//            case "human":
-//                this.race = race.getHuman();
-//            case "elf":
-//                this.race = race.getElf();
-//            case "halfElf":
-//                this.race = race.getHalfElf();
-//            case "halfOrc":
-//                this.race = race.getHalfOrc();
-//            case "aasimar":
-//                this.race = race.getAasimar();
-//            case "halfling":
-//                this.race = race.getHalfling();
-//            case "tiefling":
-//                this.race = race.getTiefling();
-//            case "dragonborn":
-//                this.race = race.getDragonborn();
-//            case "dwarf":
-//                this.race = race.getDwarf();
-//            case "gnome":
-//                this.race = race.getGnome();
-//            default:
-//                this.race = race.getHuman();
-//        }
-//    }
-public void setRace(String race) {
+    public void setRace(String race) {
     this.race = race;
 }
 
@@ -294,5 +197,4 @@ public void setRace(String race) {
     public void setIntVal(int intVal) {
         this.intVal = intVal;
     }
-
 }

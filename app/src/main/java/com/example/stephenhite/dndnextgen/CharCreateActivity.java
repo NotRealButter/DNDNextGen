@@ -3,6 +3,8 @@ package com.example.stephenhite.dndnextgen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stephenhite.dndnextgen.CreatorLogic.CreatorCntl;
+import com.example.stephenhite.dndnextgen.Fragments.AbilityScoreFragment;
 import com.example.stephenhite.dndnextgen.Fragments.CharacterCreateFragment;
 import com.example.stephenhite.dndnextgen.Fragments.GameClassFragment;
 import com.example.stephenhite.dndnextgen.Fragments.MenuFragment;
@@ -39,10 +42,17 @@ public class CharCreateActivity extends ActionBarActivity {
     DrawerLayout mDrawerLayout;
     ActionBarDrawerToggle mDrawerToggle;
 
+    private static final int NUM_PAGES = 4;
+
+    private ViewPager mPager;
+    private PagerAdapter mPagerAdapter;
+
+
     CharacterCreateFragment characterCreateFragment;
     RaceFragment raceFragment;
     MenuFragment menuFragment;
     GameClassFragment classFragment;
+    AbilityScoreFragment abilityScoreFragment;
 
     Intent mainIntent;
     Intent createIntent;
@@ -96,12 +106,15 @@ public class CharCreateActivity extends ActionBarActivity {
                         .commit();
                 setTitle(mNavigationItems.get(position).mTitle);
             case 3:
-
                 fragmentManager.beginTransaction().replace(R.id.container, classFragment, "title_section_2")
                         .commit();
                 setTitle(mNavigationItems.get(position).mTitle);
             case 4:
-                creatorCntl.saveCharacter(this.getBaseContext());
+                fragmentManager.beginTransaction().replace(R.id.container, abilityScoreFragment, "title_section_2")
+                        .commit();
+                setTitle(mNavigationItems.get(position).mTitle);
+//            case 5:
+//                creatorCntl.saveCharacter(this.getBaseContext());
         }
 
         mRightDrawer.setItemChecked(position, true);
@@ -147,6 +160,7 @@ public class CharCreateActivity extends ActionBarActivity {
         classFragment = GameClassFragment.newInstance("match_parent", "match_parent");
         raceFragment = RaceFragment.newInstance("match_parent", "match_parent");
         menuFragment = MenuFragment.newInstance("match_parent", "match_parent");
+        abilityScoreFragment = AbilityScoreFragment.newInstance("match_parent", "match_parent");
         FragmentManager fm = getSupportFragmentManager();
 
         if (savedInstanceState == null) {
@@ -219,7 +233,6 @@ public class CharCreateActivity extends ActionBarActivity {
     public void HandleRaceChange(View view) {
         Spinner raceBox = (Spinner) findViewById(R.id.raceSpinner);
         creatorCntl.userCharacter.setRace(raceBox.getSelectedItem().toString());
-
         creatorCntl.saveCharacter(this.getBaseContext());
     }
 
@@ -229,26 +242,46 @@ public class CharCreateActivity extends ActionBarActivity {
 
         creatorCntl.saveCharacter(this.getBaseContext());
     }
-//
-//    private class MyPagerAdapter extends FragmentPagerAdapter {
-//
-//        public MyPagerAdapter(FragmentManager fm) {
-//            super(fm);
-//        }
-//
-//        @Override
-//        public Fragment getItem(int pos) {
-//            switch(pos) {
-//
-//                case 0: return characterCreateFragment;
-//                case 1: return raceFragment;
-//                case 2: return classFragment;
-//            }
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return 5;
-//        }
-//    }
+
+    public void HandleStrChange(View view) {
+        TextView strVal = (TextView) findViewById(R.id.str_view);
+        creatorCntl.userCharacter.setStrVal(creatorCntl.abilityScoreRoll());
+        strVal.setText("Strength Value: " + creatorCntl.userCharacter.getStrVal());
+        creatorCntl.saveCharacter(this.getBaseContext());
+    }
+
+    public void HandleDexChange(View view) {
+        TextView dexVal = (TextView) findViewById(R.id.dex_view);
+        creatorCntl.userCharacter.setDexVal(creatorCntl.abilityScoreRoll());
+        dexVal.setText("Dexterity Value: " + creatorCntl.userCharacter.getDexVal());
+        creatorCntl.saveCharacter(this.getBaseContext());
+    }
+
+    public void HandleConChange(View view) {
+        TextView conVal = (TextView) findViewById(R.id.con_view);
+        creatorCntl.userCharacter.setConVal(creatorCntl.abilityScoreRoll());
+        conVal.setText("Constitution Value: " + creatorCntl.userCharacter.getConVal());
+        creatorCntl.saveCharacter(this.getBaseContext());
+    }
+
+    public void HandleIntChange(View view) {
+        TextView intVal = (TextView) findViewById(R.id.int_view);
+        creatorCntl.userCharacter.setIntVal(creatorCntl.abilityScoreRoll());
+        intVal.setText("Intelligence Value: " + creatorCntl.userCharacter.getIntVal());
+        creatorCntl.saveCharacter(this.getBaseContext());
+    }
+
+    public void HandleWisChange(View view) {
+        TextView wisVal = (TextView) findViewById(R.id.wis_view);
+        creatorCntl.userCharacter.setWisVal(creatorCntl.abilityScoreRoll());
+        wisVal.setText("Wisdom Value: " + creatorCntl.userCharacter.getWisVal());
+        creatorCntl.saveCharacter(this.getBaseContext());
+    }
+
+    public void HandleChaChange(View view) {
+        TextView chaVal = (TextView) findViewById(R.id.cha_view);
+        creatorCntl.userCharacter.setChaVal(creatorCntl.abilityScoreRoll());
+        chaVal.setText("Charisma Value: " + creatorCntl.userCharacter.getConVal());
+        creatorCntl.saveCharacter(this.getBaseContext());
+    }
 }
