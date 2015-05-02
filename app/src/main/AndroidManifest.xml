@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.stephenhite.dndnextgen">
+    package="com.example.stephenhite.dndnextgen" >
 
-    <uses-permission android:name="android.permission.write_external_storage"></uses-permission>
-    <uses-permission android:name="android.permission.read_external_storage"></uses-permission>
+    <uses-permission android:name="android.permission.write_external_storage" />
+    <uses-permission android:name="android.permission.read_external_storage" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         android:name=".CreatorCntl"
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,25 +23,30 @@
         <activity
             android:name=".CharCreateActivity"
             android:label="@string/title_activity_char_create"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.stephenhite.dndnextgen.MainActivity" />
         </activity>
         <activity
             android:name=".ViewCharacter"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.stephenhite.dndnextgen.MainActivity" />
         </activity>
         <activity
             android:name=".ImportCharacter"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.stephenhite.dndnextgen.MainActivity" />
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
     </application>
 
 </manifest>

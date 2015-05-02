@@ -22,7 +22,8 @@ import com.example.stephenhite.dndnextgen.Fragments.RaceFragment;
 import java.util.ArrayList;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity
+{
     ArrayList<NavItem> mNavigationItems = new ArrayList<>();
     ArrayList<NavItem> mCreationItems = new ArrayList<>();
 
@@ -74,15 +75,12 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case 1:
                 startActivity(createIntent);
-                finish();
                 break;
             case 2:
                 startActivity(viewIntent);
-                finish();
                 break;
             case 3:
                 startActivity(importIntent);
-                finish();
                 break;
         }
 

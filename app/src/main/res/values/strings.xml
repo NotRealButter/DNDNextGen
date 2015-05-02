@@ -96,6 +96,7 @@
     <string name="title_activity_import_character">ImportCharacter</string>
     <string name="title_activity_char_create">CharCreateActivity</string>
     <string name="create_character">Create Character</string>
+    <string name="title_activity_google_play_services">GooglePlayServicesActivity</string>
 
 
 </resources>

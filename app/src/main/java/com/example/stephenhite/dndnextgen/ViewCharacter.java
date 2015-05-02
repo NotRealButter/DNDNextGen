@@ -107,18 +107,17 @@ public class ViewCharacter extends ActionBarActivity {
         switch (position) {
             case 0:
                 startActivity(mainIntent);
-                finish();
                 break;
             case 1:
                 startActivity(createIntent);
-                finish();
                 break;
             case 2:
                 Toast.makeText(getBaseContext(), "You're Already There!", Toast.LENGTH_SHORT).show();
                 break;
             case 3:
                 startActivity(importIntent);
-                finish();
+                break;
+
         }
 
         mRightDrawer.setItemChecked(position, true);
